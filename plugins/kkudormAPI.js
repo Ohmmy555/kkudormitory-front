@@ -8,12 +8,12 @@ export default async (context, inject) => {
     },
   });
 
-  const test = async () => {
+  const getAll = async () => {
     return await api
-      .get(`test`)
+      .get(`/test`)
       // .then((res) => res.data.data)
       // .catch((err) => checkError(err));
   };
 
-  inject("kkudormAPI", { test });
+  inject("kkudormAPI", { getAll });
 };

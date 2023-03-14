@@ -14,7 +14,7 @@ export default {
   },
   methods: {
     callAPI() {
-      this.$kkudormAPI.test()
+      this.$kkudormAPI.getAll()
     },
   },
 };

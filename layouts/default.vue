@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <v-app-bar :clipped-left="clipped" color="white" fixed app>
+    <v-app-bar color="transparent" fixed app>
       <v-toolbar-title class="mr-5">{{ title }}</v-toolbar-title>
       <!-- <v-spacer /> -->
       <v-list nav v-for="item in items" :key="item.title">
@@ -86,3 +86,14 @@ export default {
   },
 };
 </script>
+<style>
+.v-list .v-list-item--active {
+  padding-bottom: 10px;
+  color: orange !important;
+}
+.v-list-item--active {
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-bottom: 5px solid orange;
+}
+</style>
