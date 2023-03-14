@@ -106,6 +106,21 @@ export default {
           icon: 'mdi-chart-bubble',
           title: 'Inspire',
           to: '/inspire'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'index',
+          to: '/kkudorm/indexx'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'zone',
+          to: '/kkudorm/zone'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'dormdetail',
+          to: '/kkudorm/dormdetail'
         }
       ],
       miniVariant: false,
