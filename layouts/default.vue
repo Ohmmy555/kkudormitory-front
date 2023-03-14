@@ -8,6 +8,21 @@
           item.title
         }}</v-list-item>
       </v-list>
+      <v-spacer />
+      <v-card class="mx-auto" width="600">
+        <v-card-text>
+          <v-text-field
+            :loading="loading"
+            density="compact"
+            variant="solo"
+            label="Search templates"
+            append-inner-icon="mdi-magnify"
+            single-line
+            hide-details
+            @click:append-inner="onClick"
+          ></v-text-field>
+        </v-card-text>
+      </v-card>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -38,6 +53,8 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
+      loaded: false,
+      loading: false,
       items: [
         {
           // icon: 'mdi-apps',
@@ -60,6 +77,15 @@ export default {
       rightDrawer: false,
       title: "KKU Dorm",
     };
+  },
+  methods: {
+    onClick() {
+      this.loading = true;
+      setTimeout(() => {
+        this.loading = false;
+        this.loaded = true;
+      }, 2000);
+    },
   },
 };
 </script>
