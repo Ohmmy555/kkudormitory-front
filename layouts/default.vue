@@ -1,6 +1,10 @@
 <template>
   <v-app dark>
+<<<<<<< HEAD
     <v-app-bar color="white" fixed app >
+=======
+    <v-app-bar color="white" fixed app>
+>>>>>>> 79fc3485427a71e4fe7b5b508bd602e03b7601f9
       <v-toolbar-title class="mr-5">{{ title }}</v-toolbar-title>
       <!-- <v-spacer /> -->
       

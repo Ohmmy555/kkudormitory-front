@@ -4,15 +4,19 @@ export default async (context, inject) => {
   const api = axios.create({
     baseURL,
     headers: {
-      "Content-Type": "application/json",
+      // "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      'Access-Control-Allow-Credentials': 'true',
+      "Access-Control-Allow-Headers": '*',
+      "Access-Control-Expose-Headers": '*'
     },
   });
 
   const getAll = async () => {
     return await api
-      .get(`/test`)
-      // .then((res) => res.data.data)
-      // .catch((err) => checkError(err));
+      .get(`/api/dorm/main`)
+      .then((res) => res.data)
+      .catch((err) => checkError(err));
   };
 
   inject("kkudormAPI", { getAll });
