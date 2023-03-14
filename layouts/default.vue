@@ -57,19 +57,16 @@ export default {
       loading: false,
       items: [
         {
-          // icon: 'mdi-apps',
           title: "หน้าหลัก",
+          to: "/",
+        },
+        {
+          title: "หอพักทั้งหมด",
           to: "/test1",
         },
         {
-          // icon: 'mdi-chart-bubble',
-          title: "หอพักทั้งหมด",
-          to: "/test2",
-        },
-        {
-          // icon: 'mdi-chart-bubble',
           title: "โซนหลังมอ",
-          to: "/test3",
+          to: "/test2",
         },
       ],
       miniVariant: false,
