@@ -1,21 +1,17 @@
 <template>
   <v-app dark>
-    <v-app-bar color="transparent" fixed app>
+    <v-app-bar color="white" fixed app >
       <v-toolbar-title class="mr-5">{{ title }}</v-toolbar-title>
       <!-- <v-spacer /> -->
-      <v-list nav v-for="item in items" :key="item.title">
-        <v-list-item :to="item.to" :value="item.title">{{
-          item.title
-        }}</v-list-item>
-      </v-list>
+      
       <v-spacer />
-      <v-card class="mx-auto elevation-0" width="600">
+      <v-card class="mx-auto elevation-0" width="300">
         <v-card-text>
           <v-text-field
-            color="success"
+            color="orange"
             :loading="loading"
             density="compact"
-            label="Search templates"
+            label="Search "
             append-inner-icon="mdi-magnify"
             single-line
             hide-details
@@ -25,9 +21,7 @@
       </v-card>
     </v-app-bar>
     <v-main>
-      <v-container>
         <Nuxt />
-      </v-container>
     </v-main>
     <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
       <v-list>
@@ -55,20 +49,7 @@ export default {
       fixed: false,
       loaded: false,
       loading: false,
-      items: [
-        {
-          title: "หน้าหลัก",
-          to: "/",
-        },
-        {
-          title: "หอพักทั้งหมด",
-          to: "/test1",
-        },
-        {
-          title: "โซนหลังมอ",
-          to: "/test2",
-        },
-      ],
+      
       miniVariant: false,
       right: true,
       rightDrawer: false,
