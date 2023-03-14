@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <v-app-bar :clipped-left="clipped" fixed app>
+    <v-app-bar :clipped-left="clipped" color="white" fixed app>
       <v-toolbar-title class="mr-5">{{ title }}</v-toolbar-title>
       <!-- <v-spacer /> -->
       <v-list nav v-for="item in items" :key="item">
@@ -9,12 +9,12 @@
         }}</v-list-item>
       </v-list>
       <v-spacer />
-      <v-card class="mx-auto" width="600">
+      <v-card class="mx-auto elevation-0" width="600">
         <v-card-text>
           <v-text-field
+            color="success"
             :loading="loading"
             density="compact"
-            variant="solo"
             label="Search templates"
             append-inner-icon="mdi-magnify"
             single-line
