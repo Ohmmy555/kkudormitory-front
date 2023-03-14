@@ -3,7 +3,7 @@
     <v-app-bar :clipped-left="clipped" color="white" fixed app>
       <v-toolbar-title class="mr-5">{{ title }}</v-toolbar-title>
       <!-- <v-spacer /> -->
-      <v-list nav v-for="item in items" :key="item">
+      <v-list nav v-for="item in items" :key="item.title">
         <v-list-item :to="item.to" :value="item.title">{{
           item.title
         }}</v-list-item>
