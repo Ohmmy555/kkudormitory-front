@@ -1,49 +1,50 @@
 <template>
-
-
-
-
-    <!-- <v-btn @click="callAPI" color="success">Click</v-btn>
+  <!-- <v-btn @click="callAPI" color="success">Click</v-btn>
      -->
-    <!-- <v-col v-for="zone in zones" :key="zone.name">
+  <!-- <v-col v-for="zone in zones" :key="zone.name">
       <v-card loading title="Card title" subtitle="Subtitle" text="...">{{
         zone.name
       }}</v-card>
     </v-col> -->
-    <div>
-      <v-row justify="center" align="center"  style="background-color: #f9f8f6">
-      <img src="~/assets/baner.jpg" class="banner" alt=""/>
+  <div v-show="loading">
+    <v-row justify="center" align="center" style="background-color: #f9f8f6">
+      <img src="~/assets/baner.jpg" class="banner" alt="" />
       <div class="overlay">
-      <div class="titleweb">
-        <v-title class="colo" >สวัสดีทุก ๆ ท่าน ยินดีต้อนรับเข้าสู่เว็บไซต์หอพักของเรา</v-title> <br>
-        <v-title >เว็บไซต์ของเรายินดีให้บริการทุกท่านครับ</v-title>
+        <div class="titleweb">
+          <v-title class="colo"
+            >สวัสดีทุก ๆ ท่าน ยินดีต้อนรับเข้าสู่เว็บไซต์หอพักของเรา</v-title
+          >
+          <br />
+          <v-title>เว็บไซต์ของเรายินดีให้บริการทุกท่านครับ</v-title>
+        </div>
       </div>
-
-      </div>
-      <v-container  class="overlay-card" mb-12 >
-      <v-card  v-for="zone in zones" :key="zone.name" >
-        <v-card-item >
-          <v-card-title class="colorzone">{{ zone.name_zone }}</v-card-title>
-        </v-card-item>
-        <v-container>
-        <v-row >
-          <v-col v-for="item in zone.items" :key="item" cols="3" >
-            <v-card style="border-radius: 20px;">
-              <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-                  height="200px"  cover></v-img>
-              <v-card-title class="overlayimg">{{ item.dorm_name }}</v-card-title>
-            </v-card>
-          </v-col>
-        </v-row>
-        </v-container>
-      </v-card>
-    </v-container>
+      <v-container class="overlay-card mt-n500">
+        <v-card v-for="zone in zones" :key="zone.name">
+          <v-card-item>
+            <v-card-title class="colorzone">{{ zone.name_zone }}</v-card-title>
+          </v-card-item>
+          <v-container>
+            <v-row>
+              <v-col v-for="item in zone.items" :key="item" cols="3">
+                <v-card
+                  style="border-radius: 20px"
+                  :to="{
+                    path: '/kkudorm',
+                    query: { dorm_name: item.dorm_name, dormID: item.dormID },
+                  }"
+                >
+                  <v-img :src="item.image_urls[0]" height="200px" cover></v-img>
+                  <v-card-title class="overlayimg">{{
+                    item.dorm_name
+                  }}</v-card-title>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card>
+      </v-container>
     </v-row>
-    </div>
-
-
-
-
+  </div>
 </template>
 
 <script>
@@ -52,6 +53,7 @@ export default {
   data() {
     return {
       property: "value",
+      loading: false,
       zones: [
         {
           name: "dummy",
@@ -60,8 +62,9 @@ export default {
       ],
     };
   },
-  created() {
-    this.callAPI();
+  async created() {
+    await this.callAPI();
+    this.loading = true;
   },
   methods: {
     async callAPI() {
@@ -71,21 +74,21 @@ export default {
 };
 </script>
 <style>
-.banner{
+.banner {
   height: 70vh;
   width: 150%;
   object-fit: cover;
   position: relative;
 }
-.carddorm{
+.carddorm {
   background-color: brown;
   width: 100%;
 }
-.colorzone{
+.colorzone {
   background-color: #ff914d;
   color: white;
 }
-.title{
+.title {
   font-size: 12px;
 }
 .overlay-card {
@@ -105,12 +108,10 @@ export default {
   background-color: rgba(186, 186, 186, 0.5);
   z-index: 1;
   text-align: center;
-
 }
 
-.titleweb{
+.titleweb {
   font-size: 26px;
-
 }
 .title {
   position: absolute;
@@ -147,5 +148,4 @@ export default {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   } */
-
 </style>

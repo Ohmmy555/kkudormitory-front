@@ -6,9 +6,9 @@ export default async (context, inject) => {
     headers: {
       // "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
-      'Access-Control-Allow-Credentials': 'true',
-      "Access-Control-Allow-Headers": '*',
-      "Access-Control-Expose-Headers": '*'
+      "Access-Control-Allow-Credentials": "true",
+      "Access-Control-Allow-Headers": "*",
+      "Access-Control-Expose-Headers": "*",
     },
   });
 
@@ -19,5 +19,12 @@ export default async (context, inject) => {
       .catch((err) => checkError(err));
   };
 
-  inject("kkudormAPI", { getAll });
+  const getDormByID = async (id) => {
+    return await api
+      .get(`/api/crud/detail/${id}`)
+      .then((res) => res.data[0])
+      .catch((err) => checkError(err));
+  };
+
+  inject("kkudormAPI", { getAll, getDormByID });
 };
