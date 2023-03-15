@@ -66,6 +66,7 @@ export default {
     },
     test() {
       this.$router.push(`/search?query=${this.query}`);
+      this.query = ''
     },
     onClick() {
       this.loading = true;
