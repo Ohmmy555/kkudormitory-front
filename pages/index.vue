@@ -18,7 +18,7 @@
       </div>
       
     </div>
-    <v-container  class="overlay-card" >
+    <v-container  class="overlay-card" mb-12 >
       <v-card  v-for="zone in zones" :key="zone.name" >
         <v-card-item >
           <v-card-title class="colorzone">{{ zone.name_zone }}</v-card-title>

@@ -20,7 +20,7 @@
         </v-card-text>
       </v-card>
     </v-app-bar>
-    <v-main>
+    <v-main >
         <Nuxt />
     </v-main>
     <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
