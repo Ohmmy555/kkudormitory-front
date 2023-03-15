@@ -1,5 +1,5 @@
 <template>
-  
+
 
   <v-row justify="center" align="center"  style="background-color: #f9f8f6">
 
@@ -16,13 +16,13 @@
         <v-title >สวัสดีทุก ๆ ท่าน ยินดีต้อนรับเข้าสู่เว็บไซต์หอพักของเรา</v-title> <br>
       <v-title >เว็บไซต์ของเรายินดีให้บริการทุกท่านครับ</v-title>
       </div>
-      
+
     </div>
-    <v-container  class="overlay-card" mb-12 >
+    <v-container  class="overlay-card">
       <v-card  v-for="zone in zones" :key="zone.name" >
         <v-card-item >
           <v-card-title class="colorzone">{{ zone.name_zone }}</v-card-title>
-        </v-card-item>  
+        </v-card-item>
         <v-container>
         <v-row >
           <v-col v-for="item in zone.items" :key="item" cols="3" >
@@ -34,14 +34,7 @@
           </v-col>
         </v-row>
         </v-container>
-
-
-      
-
-        
-       
       </v-card>
-    
   </v-container>
   </v-row>
 
@@ -71,7 +64,7 @@ export default {
   },
 };
 </script>
-<style> 
+<style>
 .banner{
   height: 70vh;
   width: 150%;
@@ -106,12 +99,12 @@ export default {
   background-color: rgba(186, 186, 186, 0.5);
   z-index: 1;
   text-align: center;
-  
+
 }
 
 .titleweb{
   font-size: 26px;
-  
+
 }
 .title {
   position: absolute;
