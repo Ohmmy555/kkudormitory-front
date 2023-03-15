@@ -1,7 +1,7 @@
 <template>
   
 
-  <v-row justify="center" align="center"  style="background-color: #f9f8f6">
+  
 
     <!-- <v-btn @click="callAPI" color="success">Click</v-btn>
      -->
@@ -10,15 +10,17 @@
         zone.name
       }}</v-card>
     </v-col> -->
-    <img src="~/assets/baner.jpg" class="banner" alt=""/>
-    <div class="overlay">
+    <div>
+      <v-row justify="center" align="center"  style="background-color: #f9f8f6">
+      <img src="~/assets/baner.jpg" class="banner" alt=""/>
+      <div class="overlay">
       <div class="titleweb">
-        <v-title >สวัสดีทุก ๆ ท่าน ยินดีต้อนรับเข้าสู่เว็บไซต์หอพักของเรา</v-title> <br>
-      <v-title >เว็บไซต์ของเรายินดีให้บริการทุกท่านครับ</v-title>
+        <v-title class="colo" >สวัสดีทุก ๆ ท่าน ยินดีต้อนรับเข้าสู่เว็บไซต์หอพักของเรา</v-title> <br>
+        <v-title >เว็บไซต์ของเรายินดีให้บริการทุกท่านครับ</v-title>
       </div>
       
-    </div>
-    <v-container  class="overlay-card" mb-12 >
+      </div>
+      <v-container  class="overlay-card" mb-12 >
       <v-card  v-for="zone in zones" :key="zone.name" >
         <v-card-item >
           <v-card-title class="colorzone">{{ zone.name_zone }}</v-card-title>
@@ -34,16 +36,13 @@
           </v-col>
         </v-row>
         </v-container>
-
-
-      
-
-        
-       
       </v-card>
+    </v-container>
+    </v-row>
+    </div>
     
-  </v-container>
-  </v-row>
+    
+  
 
 </template>
 
@@ -91,7 +90,7 @@ export default {
 }
 .overlay-card {
   position: absolute;
-  margin-top: 510vh;
+  margin-top: 260%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
