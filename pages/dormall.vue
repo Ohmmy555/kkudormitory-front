@@ -24,14 +24,14 @@
               </v-avatar>
               <div>
                 <div class="d-flex flex-no-wrap justify-space-between">
-                  <v-col cols="8">
-                     <span class="text-h5">
+                  <v-col cols="9" color="#ff914d">
+                     <span class="text-h5 " >
                           Supermodel kklkllllllllllllllllllllllllll
                      </span>
                   </v-col>
-                  <v-col cols="4">
-                    <span>
-                      โซน
+                  <v-col cols="4"  >
+                    <span class="namezone" >
+                      โซนหลังมอ
                     </span>
                 </v-col>
 
@@ -80,4 +80,13 @@ export default {};
 </script>
 
 <style>
+.namezone{
+  border: 2px solid #f9d21d;
+  border-radius: 20px;
+  text-align: center;
+  color: #f9d21d;
+  padding: 10px;
+ align-content:  flex-end;
+}
+
 </style>
