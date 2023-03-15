@@ -1,14 +1,16 @@
 <template>
   <v-app dark>
     <v-app-bar color="white" fixed app>
-      <v-toolbar-title class="mr-5"  >{{ title }}</v-toolbar-title>
+      <v-toolbar-title class="mr-5"
+        ><div style="cursor: pointer;" @click="index()">{{ title }}</div></v-toolbar-title
+      >
       <!-- <v-spacer /> -->
-      
+
       <v-spacer />
       <v-card class="mx-auto elevation-0" width="300">
         <v-card-text>
           <v-text-field
-            v-model ="query"
+            v-model="query"
             color="orange"
             :loading="loading"
             density="compact"
@@ -21,8 +23,8 @@
         </v-card-text>
       </v-card>
     </v-app-bar>
-    <v-main >
-        <Nuxt />
+    <v-main>
+      <Nuxt />
     </v-main>
     <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
       <v-list>
@@ -34,7 +36,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-footer :absolute="fixed" app  >
+    <v-footer :absolute="fixed" app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
@@ -50,16 +52,19 @@ export default {
       fixed: false,
       loaded: false,
       loading: false,
-      
+
       miniVariant: false,
       right: true,
       rightDrawer: false,
       title: "KKU Dorm",
-      query:""
+      query: "",
     };
   },
   methods: {
-    test(){
+    index() {
+      this.$router.push(`/`);
+    },
+    test() {
       this.$router.push(`/search?query=${this.query}`);
     },
     onClick() {
