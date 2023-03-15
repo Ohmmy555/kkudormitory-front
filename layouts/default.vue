@@ -1,7 +1,7 @@
 <template>
   <v-app dark>
     <v-app-bar color="white" fixed app>
-      <v-toolbar-title class="mr-5">{{ title }}</v-toolbar-title>
+      <v-toolbar-title class="mr-5"  >{{ title }}</v-toolbar-title>
       <!-- <v-spacer /> -->
       
       <v-spacer />
@@ -34,7 +34,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-footer :absolute="fixed" app >
+    <v-footer :absolute="fixed" app  >
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>

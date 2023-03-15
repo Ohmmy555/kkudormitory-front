@@ -37,7 +37,25 @@
                   <v-card-title class="overlayimg">{{
                     item.dorm_name
                   }}</v-card-title>
+                  <v-text class="overlayimg">ราคา {{
+                    item.month_price
+                  }} บาท</v-text>
                 </v-card>
+              </v-col>
+              <v-col cols="3">
+                <v-card
+                  style="border-radius: 20px"
+                  :to="{
+                    path: '/zone',
+                    query: { name_zone: zone.name_zone, id_zone: zone.id_zone },
+                  }"
+                >
+                  <!-- <v-img :src="item.image_urls[0]" height="200px" cover></v-img> -->
+                  <v-card-title class="overlayimg">{{
+                    zone.name_zone
+                  }}</v-card-title>
+                </v-card>
+              
               </v-col>
             </v-row>
           </v-container>

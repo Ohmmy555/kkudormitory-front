@@ -1,7 +1,9 @@
 <template>
   <v-container v-show="dorm_data != null">
-    <v-row>
-      <v-col cols="6" width="100" color="red">
+
+    <v-row class="d-flex justify-space-between pa-2 ma-2 mr-6">
+      <v-col cols="8" width="100"   style="background-color: aqua;">
+        <v-title class="text-h5">{{dorm_name}}</v-title>
         <img :src="dorm_data.img[0].image_name" alt="" class="image-braner" />
         <v-col cols="12" class="show_images d-flex justify-start">
           <img
@@ -54,7 +56,7 @@
             </v-row>
           </v-col>
         </v-row>
-        <v-col cols="12"> รูปแบบสัญญา </v-col>
+        <v-col cols="12" style="background-color: red;"> รูปแบบสัญญา </v-col>
         <v-row>
           <v-col
             cols="4"
@@ -78,6 +80,14 @@
             >{{ rule.rule_name }}</v-col
           >
         </v-row>
+        <v-col cols="12"> ที่อยู่หอพัก </v-col>
+        <v-row>
+          <v-col
+            cols="3"
+            v-for="dorm in dorm_data.dorm" :key="dorm.address"
+            >{{ dorm.address }}</v-col
+          >
+        </v-row>
         <iframe
           frameborder="0"
           scrolling="no"
@@ -87,7 +97,7 @@
         >
         </iframe>
       </v-col>
-      <v-col cols="6" width="100" color="green"> ddddddd </v-col>
+      <v-col cols="3" width="100" color="green" style="background-color: burlywood;"> ddddddd </v-col>
     </v-row>
   </v-container>
 </template>
