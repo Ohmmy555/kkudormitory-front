@@ -1,11 +1,11 @@
 <template>
+  <v-container>
   <v-row no-gutters>
-    <v-col cols="8">
-      <v-sheet class="pa-2 ma-2 mr-6">
-        <v-col cols="12">
+    <v-col cols="12"  class="d-flex justify-space-between ">
+        <v-col cols="8" class="  mr-6">
           <!-- //ก็อปตรงนี้ -->
           <v-card
-            class="mt-5"
+            class="mb-5"
             v-for="zone in content"
             :key="zone.zone"
             color="white"
@@ -16,32 +16,40 @@
           >
             <v-card-actions>
               <div class="d-flex flex-no-wrap justify-space-between">
-                <v-avatar class="ma-3" size="auto" rounded="0" cover>
-                  <v-img
+                
+                 
+                <div>
+                  <div >
+                    <v-col cols="12"><v-img
                     v-if="zone.image_urls !== null"
                     :src="zone.image_urls[0]"
-                  ></v-img>
-                </v-avatar>
-                <div>
-                  <div class="d-flex flex-no-wrap justify-space-between">
+                    height="300px"
+                    cover
+                  ></v-img> </v-col>
+                    <v-row class="d-flex justify-space-between pa-4">
                     <v-col cols="9">
-                      <span class="text-h6" style="color: #eb6e44">
+                      <span class="text-h5" style="color: #eb6e44">
                         {{ zone.aname }}
                       </span>
                     </v-col>
-                    <v-col cols="4">
+                    <v-col cols="3" class="d-flex justify-end ">
                       <span class="namezone">
                         {{ zone.zone }}
                       </span>
                     </v-col>
+                  </v-row>
                   </div>
-                  <v-col>ที่อยู่ {{ zone.detail }} </v-col>
-                  <v-col class="text-h6 textbg">ราคา {{ zone.price }}</v-col>
-                  <v-col class="pb-0">สิ่งอำนวยความสะดวก</v-col>
+                  <v-col class="pa-4">ที่อยู่ {{ zone.detail }} </v-col>
+                  <v-col class="text-h6 textbg pa-4">ราคา {{ zone.price }}</v-col>
+                  
+                  <v-col class="pa-4">สิ่งอำนวยความสะดวก</v-col>
                   <div class="d-flex">
-                    <v-row>
+                    <v-row class="pa-4">
+                      
                       <v-col cols="3" v-for="item in zone.far" :key="item">
-                        <v-icon icon="fa-solid fa-circle-check" /><v-subtitle>{{
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-check-circle-fill mr-2" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+</svg><v-subtitle>{{
                           item
                         }}</v-subtitle>
                       </v-col>
@@ -52,13 +60,11 @@
             </v-card-actions>
           </v-card>
         </v-col>
-      </v-sheet>
-    </v-col>
-    <v-col cols="4">
-      <v-sheet class="pa-2 mt-5 mr-6">
-        <v-card color="white">
-          <v-card-title style="font-weight: bold">หอพักใหม่ล่าสุด</v-card-title>
-          <v-card-text>
+        <v-col cols="4" width="100" color="green" class="pa-2 ma-1 mr-6" > 
+          <v-card color="white"> 
+            <v-card-title style="font-weight: bold"
+              >หอพักใหม่ล่าสุด</v-card-title
+            >
             <v-card
               color="white"
               class="mb-3"
@@ -93,15 +99,16 @@
                   </div>
                 </div>
               </v-card-actions>
-            </v-card>
-          </v-card-text>
-        </v-card>
-      </v-sheet>
+            </v-card> 
+          </v-card>
+        </v-col>
     </v-col>
   </v-row>
+</v-container>
 </template>
 
 <script>
+
 export default {
   data() {
     return {

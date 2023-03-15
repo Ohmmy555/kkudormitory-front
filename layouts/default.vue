@@ -2,7 +2,7 @@
   <v-app dark>
     <v-app-bar color="white" fixed app>
       <v-toolbar-title class="mr-5"
-        ><div style="cursor: pointer;" @click="index()">{{ title }}</div></v-toolbar-title
+        ><div style="cursor: pointer; color: brown;" @click="index()"><img src="~/assets/logobrand.png" alt="" style="height: 5rem;"></div></v-toolbar-title
       >
       <!-- <v-spacer /> -->
 
@@ -52,11 +52,11 @@ export default {
       fixed: false,
       loaded: false,
       loading: false,
-
+      
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: "KKU Dorm",
+      
       query: "",
     };
   },

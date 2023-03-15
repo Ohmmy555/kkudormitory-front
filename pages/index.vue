@@ -27,33 +27,42 @@
             <v-row>
               <v-col v-for="item in zone.items" :key="item" cols="3">
                 <v-card
-                  style="border-radius: 20px"
+                  
+                  style=" max-height: 22rem; min-height: 22rem; border-radius: 20px"
                   :to="{
                     path: '/kkudorm',
                     query: { dorm_name: item.dorm_name, dormID: item.dormID },
                   }"
-                >
-                  <v-img :src="item.image_urls[0]" height="200px" cover></v-img>
-                  <v-card-title class="overlayimg">{{
+                > 
+                <div class=" detail">
+                  <div  style=" height: 17rem;">
+                    <v-img :src="item.image_urls[0]" height="200px" cover style="border-top-right-radius: 20px; border-top-left-radius: 20px;"></v-img>
+                  <div class="pa-4 text-h6">{{
                     item.dorm_name
-                  }}</v-card-title>
-                  <v-text class="overlayimg">ราคา {{
+                  }}</div>
+                  </div>
+                 
+                    <div class=" d-flex pa-5" style=" height: 5rem; align-items: end; font-size: 1.2rem;">ราคา {{
                     item.month_price
-                  }} บาท</v-text>
+                  }} บาท</div>
+
+                </div>
+                  
+                  
                 </v-card>
               </v-col>
               <v-col cols="3">
                 <v-card
-                  style="border-radius: 20px"
+                style=" max-height: 22rem; min-height: 22rem; border-radius: 20px; display: flex; align-items: center; justify-content: center;"
                   :to="{
                     path: '/zone',
                     query: { name_zone: zone.name_zone, id_zone: zone.id_zone },
                   }"
                 >
                   <!-- <v-img :src="item.image_urls[0]" height="200px" cover></v-img> -->
-                  <v-card-title class="overlayimg">{{
-                    zone.name_zone
-                  }}</v-card-title>
+                  <v-card-title class="overlayimg"><svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" fill="gray" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg></v-card-title>
                 </v-card>
               
               </v-col>
@@ -141,6 +150,9 @@ export default {
   padding: 10px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+}
+.detail{
+  align-content: space-between;
 }
 /* .overlayimg {
   position: absolute;
