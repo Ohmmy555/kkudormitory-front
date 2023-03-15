@@ -25,6 +25,19 @@ export default async (context, inject) => {
       .then((res) => res.data[0])
       .catch((err) => checkError(err));
   };
+  
+  const getZoneByID = async (id) => {
+    return await api
+      .get(`/api/zone/${id}`)
+      .then((res) => res.data)
+      .catch((err) => checkError(err));
+  };
+  const getNew = async () => {
+    return await api
+      .get(`api/dorm/new`)
+      .then((res) => res.data[0].data)
+      .catch((err) => checkError(err));
+  };
 
-  inject("kkudormAPI", { getAll, getDormByID });
+  inject("kkudormAPI", { getAll, getDormByID,getZoneByID,getNew });
 };
