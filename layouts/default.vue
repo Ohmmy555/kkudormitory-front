@@ -5,7 +5,7 @@
         ><div style="cursor: pointer;" @click="index()">{{ title }}</div></v-toolbar-title
       >
       <!-- <v-spacer /> -->
-
+      <v-toolbar-title class="mr-5"><nuxt-link to="/login" style="color: black;">Login</nuxt-link></v-toolbar-title>
       <v-spacer />
       <v-card class="mx-auto elevation-0" width="300">
         <v-card-text>

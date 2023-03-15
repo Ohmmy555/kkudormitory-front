@@ -52,7 +52,7 @@ export default {
     }, async created() {
         this.search = this.$route.query.query;
         this.content = await this.$kkudormAPI.getSearch(this.search);
-    },
+    }
 }
 
 </script>

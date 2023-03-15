@@ -25,7 +25,7 @@ export default async (context, inject) => {
       .then((res) => res.data[0])
       .catch((err) => checkError(err));
   };
-  
+
   const getZoneByID = async (id) => {
     return await api
       .get(`/api/zone/${id}`)
@@ -67,7 +67,21 @@ export default async (context, inject) => {
       .catch((err) => checkError(err));
   };
 
-  inject("kkudormAPI", { getAll, getDormByID, getAdminMainp1, getAdminMainp2, getAdminMainp3, getSearch, getZoneByID,getNew });
+  const getDormitory = async (id) => {
+    return await api
+      .get(`/api/crud/detail/${id}`)
+      .then((res) => res.data)
+      .catch((err) => checkError(err));
+  };
 
+  const updateDormitory = async (id) => {
+    return await api
+      .get(`/api/crud/updated/${id}`)
+      .then((res) => res.data)
+      .catch((err) => checkError(err));
+  };
   
+  inject("kkudormAPI", { getAll, getDormByID, getAdminMainp1, getAdminMainp2, getAdminMainp3, getSearch, getZoneByID, getNew, getDormitory, updateDormitory });
+
+
 };
