@@ -73,11 +73,15 @@
       </v-col>
       <v-col cols="4" >
         <v-sheet class="pa-2 mt-5 mr-6">
-  <v-card color="white"> 
+  <v-card color="white" > 
     <v-card-title style="font-weight: bold;">หอพักใหม่ล่าสุด</v-card-title>
     <v-card-text>
-      <v-card color="white" class="mb-3" v-for="newx in new_data" :key="newx.dormid"> <!--ก็อปตรงนี้-->
-        <v-card-actions>
+      <v-card color="white" class="mb-3" v-for="newx in new_data" :key="newx.dormid" 
+                 :to="{
+                    path: '/kkudorm',
+                    query: { dorm_name: newx.dorm_name, dormID: newx.dormID },
+                  }"> <!--ก็อปตรงนี้-->
+        <v-card-actions >
           <div class="d-flex flex-no-wrap justify-space-between">
             <v-avatar class="ma-2" size="100px" rounded="0" cover>
               <v-img v-if="newx.image_urls !== null" :src="newx.image_urls[0]"></v-img>
