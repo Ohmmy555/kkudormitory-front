@@ -8,6 +8,7 @@
       <v-card class="mx-auto elevation-0" width="300">
         <v-card-text>
           <v-text-field
+            v-model ="query"
             color="orange"
             :loading="loading"
             density="compact"
@@ -15,7 +16,7 @@
             append-inner-icon="mdi-magnify"
             single-line
             hide-details
-            @click:append-inner="onClick"
+            @keyup.enter="test()"
           ></v-text-field>
         </v-card-text>
       </v-card>
@@ -54,9 +55,13 @@ export default {
       right: true,
       rightDrawer: false,
       title: "KKU Dorm",
+      query:""
     };
   },
   methods: {
+    test(){
+      this.$router.push(`/search?query=${this.query}`);
+    },
     onClick() {
       this.loading = true;
       setTimeout(() => {

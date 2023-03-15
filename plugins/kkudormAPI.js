@@ -26,5 +26,35 @@ export default async (context, inject) => {
       .catch((err) => checkError(err));
   };
 
-  inject("kkudormAPI", { getAll, getDormByID });
+  const getAdminMainp1 = async () => {
+    return await api
+      .get(`/api/crud/admin/dorm?page=0`)
+      .then((res) => res.data.content)
+      .catch((err) => checkError(err));
+  };
+
+  const getAdminMainp2 = async () => {
+    return await api
+      .get(`/api/crud/admin/dorm?page=1`)
+      .then((res) => res.data[0])
+      .catch((err) => checkError(err));
+  };
+
+  const getAdminMainp3 = async () => {
+    return await api
+      .get(`/api/crud/admin/dorm?page=2`)
+      .then((res) => res.data[0])
+      .catch((err) => checkError(err));
+  };
+
+  const getSearch = async (text) => {
+    return await api
+      .get(`/api/search?dorm=${text}`)
+      .then((res) => res.data)
+      .catch((err) => checkError(err));
+  };
+
+  inject("kkudormAPI", { getAll, getDormByID, getAdminMainp1, getAdminMainp2, getAdminMainp3, getSearch });
+
+  
 };
