@@ -1,24 +1,25 @@
 <template>
   <v-app dark>
-    <v-app-bar color="white" fixed app>
+    <v-app-bar color="#eb6e44" fixed app>
       <v-toolbar-title class="mr-5"
-        ><div style="cursor: pointer; color: brown;" @click="index()"><img src="~/assets/logobrand.png" alt="" style="height: 5rem;"></div></v-toolbar-title
+        ><div style="cursor: pointer; color: brown;" @click="index()"><img src="~/assets/logobrand.png" alt="" style="height: 5rem; margin: 1px;"></div></v-toolbar-title
       >
       <!-- <v-spacer /> -->
 
       <v-spacer />
-      <v-card class="mx-auto elevation-0" width="300">
-        <v-card-text>
+      <v-card class="mx-auto elevation-0" width="300" height="50">
+        <v-card-text >
           <v-text-field
             v-model="query"
             color="orange"
+            
             :loading="loading"
             density="compact"
             label="Search "
             append-inner-icon="mdi-magnify"
             single-line
             hide-details
-            @keyup.enter="test()"
+            @keyup.enter="test()" 
           ></v-text-field>
         </v-card-text>
       </v-card>
@@ -60,20 +61,20 @@ export default {
       query: "",
     };
   },
-  methods: {
-    index() {
-      this.$router.push(`/`);
+  methods: { 
+    index() { 
+      this.$router.push(`/`); 
     },
-    test() {
-      this.$router.push(`/search?query=${this.query}`);
+    test() { 
+      this.$router.push(`/search?query=${this.query}`); 
       this.query = ''
     },
-    onClick() {
-      this.loading = true;
-      setTimeout(() => {
-        this.loading = false;
-        this.loaded = true;
-      }, 2000);
+    onClick() { 
+      this.loading = true; 
+      setTimeout(() => { 
+        this.loading = false; 
+        this.loaded = true; 
+      }, 2000); 
     },
   },
 };

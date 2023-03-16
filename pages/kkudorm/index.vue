@@ -5,7 +5,7 @@
       <div cols="12" class="d-flex justify-space-between pa-2 ma-2 mr-6" >
       <v-col cols="8" width="100"  >
         <v-card >
-        <div class="text-h5 pa-5 ">{{dorm_name}}</div>
+        <div class="text-h5 pa-5 " style="color: #eb6e44;">{{dorm_name}}</div>
         <img :src="select" alt="" class="image-braner pa-4 " />
         <v-col cols="12" class="show_images d-flex justify-start">
           <img
@@ -17,7 +17,7 @@
             @click="select=item.image_name"
           />
         </v-col>
-        <v-col cols="12"> ช่องทางติดต่อ </v-col>
+        <v-col cols="12" style="text-align: center; font-size: 18pt; color: #eb6e44;"> ช่องทางติดต่อ </v-col>
         <v-row class="pl-4">
           <v-col 
             cols="6"
@@ -27,9 +27,9 @@
             {{ contact.contact_type }} : {{ contact.value }}
           </v-col>
         </v-row>
-        <v-col cols="12"> รายละเอียด </v-col>
+        <v-col cols="12" style="text-align: center; font-size: 18pt; color: #eb6e44;"> รายละเอียด </v-col>
         <v-row class="pl-4">
-          <v-col cols="5">รายละเอียดเกี่ยวกับ {{ dorm_name }}</v-col>
+          <v-col cols="12">รายละเอียดเกี่ยวกับ {{ dorm_name }}</v-col>
           <v-col cols="12" class="details-blog">
             <v-row>
               <v-col  style="border-bottom: 1px solid lightgray"  cols="5">รายเดือน</v-col>
@@ -59,7 +59,7 @@
             </v-row>
           </v-col>
         </v-row >
-        <v-col class="mt-10" cols="12" style=""> รูปแบบสัญญา </v-col>
+        <v-col class="mt-10" cols="12" style="text-align: center; font-size: 18pt; color: #eb6e44;"> รูปแบบสัญญา </v-col>
         <v-row class="pa-5">
           <v-col
             cols="4"
@@ -68,7 +68,7 @@
             >{{ contract.name }}</v-col
           >
         </v-row>
-        <v-col cols="12"> สิ่งอำนวยความสะดวก </v-col>
+        <v-col cols="12" style="text-align: center; font-size: 18pt; color: #eb6e44;"> สิ่งอำนวยความสะดวก </v-col>
         <v-row class="pa-5">
           <v-col cols="3" v-for="fac in dorm_data.fac" :key="fac.fac_name"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-check-circle-fill mr-2" viewBox="0 0 16 16">
   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
@@ -76,7 +76,7 @@
             fac.fac_name
           }}</v-col>
         </v-row>
-        <v-col cols="12"> กฎหอพัก </v-col>
+        <v-col cols="12" style="text-align: center; font-size: 18pt; color: #eb6e44;"> กฎหอพัก </v-col>
         <v-row class="pa-5">
           <v-col
             cols="3"
@@ -88,7 +88,7 @@
           >
         </v-row>
 
-        <v-col cols="12"> ที่อยู่หอพัก </v-col>
+        <v-col cols="12" style="text-align: center; font-size: 18pt; color: #eb6e44;"> ที่อยู่หอพัก </v-col>
         <v-row class="pa-5">
           <v-col
             cols="12"
@@ -110,7 +110,7 @@
       </v-col>
          <v-col cols="4" width="100" color="green" class="pa-2 ma-1 mr-6" > 
           <v-card color="white"> 
-            <v-card-title style="font-weight: bold"
+            <v-card-title style="font-weight: bold; color: #998a8e;"
               >หอพักใหม่ล่าสุด</v-card-title
             >
             <v-card-text>
@@ -133,12 +133,11 @@
                     </v-avatar> 
                     <div> 
                       <v-col cols="12">
-                        <v-text
+                        <p
                           class="text"
-                          style="color: black; font-size: 18px"
+                          style="color: #eb6e44; font-size: 18px"
                           >{{ newx.dorm_name }}
-                        </v-text>
-                        <br />
+                        </p>
                         <v-text class="text">ที่อยู่ {{ newx.address }}</v-text> 
                         <br />
                         <v-text class="text" style="font-weight: bold"
@@ -167,56 +166,56 @@
 <script>
 export default {
   data() {
-    return {
-      select:"",
-      dormID: String,
-      drom_name: String,
+    return { 
+      select:"", 
+      dormID: String, 
+      drom_name: String, 
       new_data: [{ image_urls: [""] }],
-      dorm_data: {
+      dorm_data: { 
         img: [{ image_name: "" }],
-        dorm: {
-          address:
-            "160/19 ซ.หน้าแฟลตตำรวจ ถ.ศรีมารัตน์12 ในเมือง เมืองขอนแก่น ขอนแก่น 40000",
-          month_price: 0,
-          water_fee_price: 0,
-          central_fee_price: 0,
-          insurance_price: 0,
-          eletric_fee_price: 0,
-          dorm_name: "รมิดาอพาร์ทเมนต์",
-          dormid: 1,
-          adminid: 1,
-          zoneid: 1,
-          daliy_price: 0,
-          detail:
+        dorm: { 
+          address: 
+            "160/19 ซ.หน้าแฟลตตำรวจ ถ.ศรีมารัตน์12 ในเมือง เมืองขอนแก่น ขอนแก่น 40000", 
+          month_price: 0, 
+          water_fee_price: 0, 
+          central_fee_price: 0, 
+          insurance_price: 0, 
+          eletric_fee_price: 0, 
+          dorm_name: "รมิดาอพาร์ทเมนต์", 
+          dormid: 1, 
+          adminid: 1, 
+          zoneid: 1, 
+          daliy_price: 0, 
+          detail: 
             "บรรยากาศเงียบสงบ ปลอดภัยอยู่ตรงข้ามแฟลตตำรวจ ถนนกาญจนาภิเษก ข้างมหาวิทยาลัยขอนแก่น อยู่ใกล้ ศูนย์ประชุมกาญจนาภิเษก จุดStartวิ่งมาราธอน โรงเรียนสาธิตศึกษาศาสตร์ โรงพยาบาลกรุงเทพ ตึก True สนามเทนนิสศรีชาพันธ์ุ  เดินทางไป Centralเซ็นทรัล โรงพยาบาลศรีนครินทร์ คณะเภสัช คณะแพทย์ คณะนิติศาสตร์ เดินทางไปยังสนามบินได้สะดวกรวดเร็ว มีระบบป้องกันคนภายนอกด้วยประตูสแกนลายนิ้วมือ พร้อมระบบกล้องวงจรปิด 16 กล้อง ภายในห้องมีอุปกรณือำนวยความสะดวกครบครัน ",
-          map: "16.48289732677371,102.81734489945974",
-        },
-        contract: [
-          {
-            name: "9 เดือน",
-          },
-        ],
-        fac: [
-          {
-            fac_name: "แอร์",
-            fac_typeid: 1,
-            facid: 1,
+          map: "16.48289732677371,102.81734489945974", 
+        }, 
+        contract: [ 
+          { 
+            name: "9 เดือน", 
+          }, 
+        ], 
+        fac: [ 
+          { 
+            fac_name: "แอร์", 
+            fac_typeid: 1, 
+            facid: 1, 
           },
         ],
         rule: [
           {
-            rule_name: "ไม่ให้เลี้ยงสัตว์นะ",
-            ruleid: 1,
-          },
-        ],
-      },
-      dialog: false,
-    };
+            rule_name: "ไม่ให้เลี้ยงสัตว์นะ", 
+            ruleid: 1, 
+          }, 
+        ], 
+      }, 
+      dialog: false, 
+    }; 
   },
-  async created() {
-    this.dorm_name = this.$route.query.dorm_name;
-    this.dormID = this.$route.query.dormID;
-    this.dorm_data = await this.$kkudormAPI.getDormByID(this.dormID);
+  async created() { 
+    this.dorm_name = this.$route.query.dorm_name; 
+    this.dormID = this.$route.query.dormID; 
+    this.dorm_data = await this.$kkudormAPI.getDormByID(this.dormID); 
     this.select= this.dorm_data.img[0].image_name
     this.new_data = await this.$kkudormAPI.getNew();
 

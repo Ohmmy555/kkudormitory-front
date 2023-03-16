@@ -1,9 +1,9 @@
-import axios from "axios";
-export default async (context, inject) => {
-  const baseURL = process.env.BASE_URL || "http://localhost:8880";
-  const api = axios.create({
-    baseURL,
-    headers: {
+import axios from "axios"; 
+export default async (context, inject) => { 
+  const baseURL = process.env.BASE_URL || "http://localhost:8880"; 
+  const api = axios.create({ 
+    baseURL, 
+    headers: { 
       // "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Credentials": "true",
@@ -12,21 +12,21 @@ export default async (context, inject) => {
     },
   });
 
-  const getAll = async () => {
-    return await api
-      .get(`/api/dorm/main`)
-      .then((res) => res.data)
-      .catch((err) => checkError(err));
+  const getAll = async () => { 
+    return await api 
+      .get(`/api/dorm/main`) 
+      .then((res) => res.data) 
+      .catch((err) => checkError(err)); 
   };
 
   const getDormByID = async (id) => {
     return await api
-      .get(`/api/crud/detail/${id}`)
-      .then((res) => res.data[0])
-      .catch((err) => checkError(err));
+      .get(`/api/crud/detail/${id}`) 
+      .then((res) => res.data[0]) 
+      .catch((err) => checkError(err)); 
   };
   
-  const getZoneByID = async (id) => {
+  const getZoneByID = async (id) => { 
     return await api
       .get(`/api/zone/${id}`)
       .then((res) => res.data)

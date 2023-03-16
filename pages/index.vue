@@ -10,18 +10,17 @@
     <v-row justify="center" align="center" style="background-color: #f9f8f6">
       <img src="~/assets/baner.jpg" class="banner" alt="" />
       <div class="overlay">
-        <div class="titleweb">
-          <v-title class="colo"
-            >สวัสดีทุก ๆ ท่าน ยินดีต้อนรับเข้าสู่เว็บไซต์หอพักของเรา</v-title
-          >
-          <br />
-          <v-title>เว็บไซต์ของเรายินดีให้บริการทุกท่านครับ</v-title>
-        </div>
+        <div class="titleweb"> 
+          
+            สวัสดีทุก ๆ ท่าน ยินดีต้อนรับเข้าสู่เว็บไซต์หอพักของเรา
+          <br /> 
+          <div>เว็บไซต์ของเรายินดีให้บริการทุกท่านครับ</div>  
+        </div> 
       </div>
-      <v-container class="overlay-card mt-n500">
-        <v-card v-for="zone in zones" :key="zone.name">
-          <v-card-item>
-            <v-card-title class="colorzone">{{ zone.name_zone }}</v-card-title>
+      <v-container class="overlay-card "> 
+        <v-card v-for="zone in zones" :key="zone.name"> 
+          <v-card-item> 
+            <v-card-title class="colorzone">{{ zone.name_zone }}</v-card-title> 
           </v-card-item>
           <v-container>
             <v-row>
@@ -29,20 +28,20 @@
                 <v-card
                   
                   style=" max-height: 22rem; min-height: 22rem; border-radius: 20px"
-                  :to="{
-                    path: '/kkudorm',
-                    query: { dorm_name: item.dorm_name, dormID: item.dormID },
-                  }"
+                  :to="{ 
+                    path: '/kkudorm', 
+                    query: { dorm_name: item.dorm_name, dormID: item.dormID }, 
+                  }" 
                 > 
                 <div class=" detail">
                   <div  style=" height: 17rem;">
-                    <v-img :src="item.image_urls[0]" height="200px" cover style="border-top-right-radius: 20px; border-top-left-radius: 20px;"></v-img>
+                    <v-img :src="item.image_urls[0]" height="200px" cover style=" color: #6a515e; border-top-right-radius: 20px; border-top-left-radius: 20px;"></v-img>
                   <div class="pa-4 text-h6">{{
                     item.dorm_name
                   }}</div>
                   </div>
                  
-                    <div class=" d-flex pa-5" style=" height: 5rem; align-items: end; font-size: 1.2rem;">ราคา {{
+                    <div class=" d-flex pa-5" style=" height: 5rem; align-items: end; font-size: 1.2rem; color: #a18a96;">ราคา {{
                     item.month_price
                   }} บาท</div>
 
@@ -76,26 +75,26 @@
 
 <script>
 export default {
-  name: "IndexPage",
-  data() {
-    return {
-      property: "value",
-      loading: false,
-      zones: [
-        {
-          name: "dummy",
-          items: [],
-        },
-      ],
-    };
+  name: "IndexPage", 
+  data() { 
+    return { 
+      property: "value", 
+      loading: false, 
+      zones: [ 
+        { 
+          name: "dummy", 
+          items: [], 
+        }, 
+      ], 
+    }; 
+  }, 
+  async created() { 
+    await this.callAPI(); 
+    this.loading = true; 
   },
-  async created() {
-    await this.callAPI();
-    this.loading = true;
-  },
-  methods: {
-    async callAPI() {
-      this.zones = await this.$kkudormAPI.getAll();
+  methods: { 
+    async callAPI() { 
+      this.zones = await this.$kkudormAPI.getAll(); 
     },
   },
 };
@@ -112,15 +111,15 @@ export default {
   width: 100%;
 }
 .colorzone {
-  background-color: #ff914d;
-  color: white;
+  background-color: #fff3cd;
+  color: #664d03;
 }
 .title {
   font-size: 12px;
 }
 .overlay-card {
   position: absolute;
-  margin-top: 260%;
+  margin-top: 320%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -138,7 +137,11 @@ export default {
 }
 
 .titleweb {
+  align-items: center;
+  justify-content: center;
+  margin: 4rem;
   font-size: 26px;
+  color: white;
 }
 .title {
   position: absolute;
@@ -153,6 +156,9 @@ export default {
 }
 .detail{
   align-content: space-between;
+}
+.colo{
+  color: white;
 }
 /* .overlayimg {
   position: absolute;

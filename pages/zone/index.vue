@@ -2,7 +2,7 @@
   <v-container>
   <v-row no-gutters>
     <v-col cols="12"  class="d-flex justify-space-between ">
-        <v-col cols="8" class="  mr-6">
+        <v-col cols="8" class=" ">
           <!-- //ก็อปตรงนี้ -->
           <v-card
             class="mb-5"
@@ -21,7 +21,7 @@
                  
                 <div>
                   <div >
-                    <div ><v-img style=""
+                    <div ><v-img style="width: 720px; height: 300px;"
                     v-if="zone.image_urls !== null"
                     :src="zone.image_urls[0]"
                    
@@ -62,7 +62,7 @@
         </v-col>
         <v-col cols="4" width="100" color="green" class="pa-2 ma-1 mr-6" > 
           <v-card color="white"> 
-            <v-card-title style="font-weight: bold"
+            <v-card-title style="font-weight: bold; color: #998a8e;"
               >หอพักใหม่ล่าสุด</v-card-title
             >
             <v-card
@@ -86,7 +86,7 @@
                   </v-avatar>
                   <div>
                     <v-col cols="12">
-                      <v-text class="text" style="color: black; font-size: 18px"
+                      <v-text class="text" style="color: #eb6e44; font-size: 18px"
                         >{{ newx.dorm_name }}
                       </v-text>
                       <br />

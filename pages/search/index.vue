@@ -62,7 +62,7 @@
         </v-col>
         <v-col cols="4" width="100" color="green" class="pa-2 ma-1 mr-6" > 
           <v-card color="white"> 
-            <v-card-title style="font-weight: bold"
+            <v-card-title style="font-weight: bold; color: #998a8e;"
               >หอพักใหม่ล่าสุด</v-card-title
             >
             <v-card
@@ -86,7 +86,7 @@
                   </v-avatar>
                   <div>
                     <v-col cols="12">
-                      <v-text class="text" style="color: black; font-size: 18px"
+                      <v-text class="text" style="color: #eb6e44; font-size: 18px"
                         >{{ newx.dorm_name }}
                       </v-text>
                       <br />
@@ -109,36 +109,36 @@
 
 <script>
 
-export default {
-  data() {
-    return {
-      property: "value",
-      content: [],
-      name_zone: "",
-      id_zone: "",
-      zone_data: [{ image_urls: [""] }],
+export default { 
+  data() { 
+    return { 
+      property: "value", 
+      content: [], 
+      name_zone: "", 
+      id_zone: "", 
+      zone_data: [{ image_urls: [""] }], 
       loading: false,
-      new_data: [{ image_urls: [""] }],
+      new_data: [{ image_urls: [""] }], 
     };
+  }, 
+  created() { 
+    this.callAPI();  
   },
-  created() {
-    this.callAPI();
+  methods: { 
+    async callAPI() { 
+      this.content = await this.$kkudormAPI.getSearch(); 
+    }, 
   },
-  methods: {
-    async callAPI() {
-      this.content = await this.$kkudormAPI.getSearch();
-    },
-  },
-  async created() {
-    this.search = this.$route.query.query;
-    this.content = await this.$kkudormAPI.getSearch(this.search);
+  async created() { 
+    this.search = this.$route.query.query; 
+    this.content = await this.$kkudormAPI.getSearch(this.search); //รอก่อน
 
     // this.name_zone = this.$route.query.name_zone;
     // this.id_zone = this.$route.query.id_zone;
     // this.zone_data = await this.$kkudormAPI.getZoneByID(this.id_zone);
-    this.new_data = await this.$kkudormAPI.getNew();
+    this.new_data = await this.$kkudormAPI.getNew(); 
     // this.zone_data.image_urls = this.zone_data.image_urls[0]
-    this.loading = true;
+    this.loading = true; 
   },
 };
 </script>
