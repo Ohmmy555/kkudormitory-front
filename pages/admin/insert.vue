@@ -1,15 +1,13 @@
 <template>
     <div class="col-15 col-md-11 col-xl-15 mt-5 mx-15">
         <div class="row">
-            <div class="">
-                <div>
                     <h3 class="alert alert-success" style="width:100%;">เพิ่มข้อมูลหอพัก</h3>
                     <form @submit.prevent="handleSubmit">
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="mb-3">
                                     <label for="name" class="form-label">ชื่อหอพัก</label>
-                                    <input type="text" v-model="formData.name" name="name" class="form-control" id="name"
+                                    <input type="text" v-model="nameDorm" class="form-control" id="name"
                                         placeholder="ตัวอย่าง หอใส่ใจใส่ไข่สองฟอง" required>
                                 </div>
                                 <div class="mb-3">
@@ -359,8 +357,6 @@
                         </div>
                         <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
                     </form>
-                </div>
-            </div>
         </div>
     </div>
 </template>
@@ -377,8 +373,7 @@ Vue.use(TablePlugin);
 export default {
     data() {
         return {
-            formData: {
-            name: '',
+            nameDorm: '',
             description: '',
             address: '',
             price: '',
@@ -449,18 +444,25 @@ export default {
             nearby_store_distance2: '',
             nearby_store_name3: '',
             nearby_store_distance3: '',
-            image: ''
+            image: '',
+            formData: null 
             }
-        }
     },
     methods: {
         async handleSubmit() {
+            const formData = new FormData()
+      formData.append('name', this.nameDorm)
+      formData.append('description', this.description)
+      formData.append('address', this.address)
+      formData.append('price', this.price)
+      formData.append('image', this.image)
             try {
-        const response = await this.$axios.post('/api/crud/create', this.formData)
+        const response = await axios.post('127.0.0.1:8880/api/admin/test', "test")
         console.log(response.data)
       } catch (error) {
         console.error(error)
       }
+    console.log(formData);
         }
         
     }
