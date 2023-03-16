@@ -457,7 +457,7 @@ export default {
       formData.append('price', this.price)
       formData.append('image', this.image)
             try {
-        const response = await axios.post('127.0.0.1:8880/api/admin/test', "test")
+        const response = await this.$kkudormAPI.createDorm(formData);
         console.log(response.data)
       } catch (error) {
         console.error(error)

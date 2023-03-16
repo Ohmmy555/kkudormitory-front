@@ -41,8 +41,8 @@ export default async (context, inject) => {
 
   const getAdminMainp1 = async () => {
     return await api
-      .get(`/api/crud/admin/dorm`)
-      .then((res) => res.data)
+      .get(`/api/admin`)
+      .then((res) => res)
       .catch((err) => checkError(err));
   };
 
@@ -67,7 +67,21 @@ export default async (context, inject) => {
       .catch((err) => checkError(err));
   };
 
-  inject("kkudormAPI", { getAll, getDormByID, getAdminMainp1, getAdminMainp2, getAdminMainp3, getSearch, getZoneByID,getNew });
+  const createDorm = async (formData) => {
+    return await api
+    .post(`/api/crud/create`,formData)
+    .then((res) => res.data)
+    .catch((err) => checkError(err));
+  }
+
+  const deleteDorm = async (id) => {
+    return await api
+    .delete(`/api/crud/del/${id}`)
+    .then((res) => res.data)
+    .catch((err) => checkError(err));
+  }
+
+  inject("kkudormAPI", { getAll, getDormByID, getAdminMainp1, getAdminMainp2, getAdminMainp3, getSearch, getZoneByID,getNew,createDorm,deleteDorm });
 
   
 };

@@ -1,6 +1,4 @@
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-</head>
+
 <template>
   <div>
     <div class="container-fulid">
@@ -29,10 +27,10 @@
               </b-thead>
               <b-tbody>
                 <b-tr v-for="element in data.content" :key="element._id">
-                  <b-td>{{ element.dormName }}</b-td>
+                  <b-td>{{ element.dorm_name }}</b-td>
                   <b-td>{{ element.address }}</b-td>
-                  <b-td>{{ element.zoneID }}</b-td>
-                  <b-td>{{ element.monthPrice }}</b-td>
+                  <b-td>{{ element.zonenamethai }}</b-td>
+                  <b-td>{{ element.month_price }}</b-td>
                   <b-td>
                     <router-link :to="`/admin/edit/${element.dormID}`">
                       <button
@@ -46,7 +44,7 @@
                   <b-td>
                     <button
                       class="btn btn-danger"
-                      @click="deleteDormitory(element.dormID)"
+                      @click="deleteItem(element.dormID)"
                     >
                       ลบ
                     </button>
@@ -111,17 +109,19 @@ import { TablePlugin } from "bootstrap-vue";
 Vue.use(TablePlugin);
 
 export default {
+  modules: [
+  '@nuxtjs/toast'
+],
+toast: {
+  position: 'top-right',
+  duration: 3000
+},
   data() {
     return {
       data: [],
       currentPage: 1,
       itemsPerPage: 10,
       searchText: "",
-      fields: [
-        { key: "a", sortable: true },
-        { key: "b", sortable: true },
-        { key: "c", sortable: true },
-      ],
     };
   },
   computed: {
@@ -146,7 +146,7 @@ export default {
     async fetchData() {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8880/api/crud/admin/dorm"
+          "http://127.0.0.1:8880/api/admin"
         );
         this.data = response.data;
         console.log(this.data);
@@ -154,10 +154,30 @@ export default {
         console.log(error);
       }
     },
+    async deleteItem(itemId) {
+  if (window.confirm('Are you sure you want to delete this item?')) {
+    try {
+      // Call API to delete item
+      await this.$kkudormAPI.deleteDorm(itemId);
+      this.fetchData();
+      // Show success message
+      if (this.$toast && this.$toast.success) {
+        this.$toast.success('Item deleted successfully');
+      }
+    } catch (error) {
+      console.error(error);
+      // Show error message
+      if (this.$toast && this.$toast.error) {
+        this.$toast.error('An error occurred while deleting the item');
+      }
+    }
+  }
+}
   },
   mounted() {
     this.fetchData();
   },
+
 };
 </script>
 
