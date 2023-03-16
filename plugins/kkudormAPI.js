@@ -41,8 +41,8 @@ export default async (context, inject) => {
 
   const getAdminMainp1 = async () => {
     return await api
-      .get(`/api/crud/admin/dorm?page=0`)
-      .then((res) => res.data.content)
+      .get(`/api/crud/admin/dorm`)
+      .then((res) => res.data)
       .catch((err) => checkError(err));
   };
 

@@ -1,58 +1,169 @@
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
 <template>
-    <div>
-        <h1>จัดการข้อมูล</h1>
-        <v-table fixed-header height="300px">
-            <thead>
-                <tr>
-                    <th>ชื่อหอพัก</th>
-                    <th>ที่อยู่</th>
-                    <th>โซน</th>
-                    <th>ราคา</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="c in content" :key="c.dormID">
-                    <td>{{ c.dormName }}</td>
-                    <td>{{ c.address }}</td>
-                    <td>{{ c.zoneID }}</td>
-                    <td>{{ c.monthPrice }}</td>
-                    <td><router-link :to="`/admin/edit/${c.dormID}`">แก้ไข</router-link></td>
-                    <td><button @click="deleteDormitory(c.dormID)">ลบ</button></td>
-                </tr>
-            </tbody>
-        </v-table>
-        <router-link to="/admin/insert">เพิ่มข้อมูลหอพัก</router-link>
-        <form @submit.prevent="searchDormitory">
-            <input type="search" >
-            <button type="submit">Search</button>
-        </form>
+  <div>
+    <div class="container-fulid">
+      <div class="row flex-nowrap mx-10">
+        <div class="col-11 col-md-9 col-xl-11 px-sm-2 px-0 mt-5 mx-5">
+          <div class="d-flex justify-content-between">
+            <div>
+              <h3>รายละเอียดหอพัก</h3>
+              <nuxt-link :to="`/admin/insert`">
+                <button class="btn btn-success">เพิ่มข้อมูลหอพัก</button>
+              </nuxt-link>
+              <br />
+            </div>
+          </div>
+          <div class="mt-3">
+            <b-table-simple hover class="table table-bordered">
+              <b-thead head-variant="dark">
+                <b-tr>
+                  <b-th>ชื่อหอพัก</b-th>
+                  <b-th>ที่อยู่</b-th>
+                  <b-th>โซน</b-th>
+                  <b-th>ราคา</b-th>
+                  <b-th></b-th>
+                  <b-th></b-th>
+                </b-tr>
+              </b-thead>
+              <b-tbody>
+                <b-tr v-for="element in data.content" :key="element._id">
+                  <b-td>{{ element.dormName }}</b-td>
+                  <b-td>{{ element.address }}</b-td>
+                  <b-td>{{ element.zoneID }}</b-td>
+                  <b-td>{{ element.monthPrice }}</b-td>
+                  <b-td>
+                    <router-link :to="`/admin/edit/${element.dormID}`">
+                      <button
+                        class="btn btn-primary"
+                        :to="`/admin/edit/${element.dormID}`"
+                      >
+                        แก้ไข
+                      </button>
+                    </router-link>
+                  </b-td>
+                  <b-td>
+                    <button
+                      class="btn btn-danger"
+                      @click="deleteDormitory(element.dormID)"
+                    >
+                      ลบ
+                    </button>
+                  </b-td>
+                </b-tr>
+              </b-tbody>
+            </b-table-simple>
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item" :class="{ disabled: currentPage === 1 }">
+                  <a
+                    class="page-link"
+                    href="#"
+                    aria-label="Previous"
+                    @click.prevent="currentPage = currentPage - 1"
+                  >
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li
+                  v-for="page in pages"
+                  :key="page"
+                  class="page-item"
+                  :class="{ active: currentPage === page }"
+                >
+                  <a
+                    class="page-link"
+                    href="#"
+                    @click.prevent="currentPage = page"
+                    >{{ page }}</a
+                  >
+                </li>
+                <li
+                  class="page-item"
+                  :class="{ disabled: currentPage === pages.length }"
+                >
+                  <a
+                    class="page-link"
+                    href="#"
+                    aria-label="Next"
+                    @click.prevent="currentPage = currentPage + 1"
+                  >
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
-
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 <script>
-export default {
+import axios from "axios";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
+import Vue from "vue";
+import { TablePlugin } from "bootstrap-vue";
+Vue.use(TablePlugin);
 
-            data() {
-                return {
-                    property: "value",
-                    content: [
-                    ],
-                };
-            },
-            created() {
-                this.callAPI();
-            },
-            methods: {
-                async callAPI() {
-                    this.content = await this.$kkudormAPI.getAdminMainp1();
-                    
-                },
-            },
-        }
-    
+export default {
+  data() {
+    return {
+      data: [],
+      currentPage: 1,
+      itemsPerPage: 10,
+      searchText: "",
+      fields: [
+        { key: "a", sortable: true },
+        { key: "b", sortable: true },
+        { key: "c", sortable: true },
+      ],
+    };
+  },
+  computed: {
+    pages() {
+      if (this.data.length === 0) {
+        return [];
+      }
+      const pageCount = Math.ceil(this.data.length / this.itemsPerPage);
+      const pageArray = [];
+      for (let i = 1; i <= pageCount; i++) {
+        pageArray.push(i);
+      }
+      return pageArray;
+    },
+    paginatedData() {
+      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+      const endIndex = startIndex + this.itemsPerPage;
+      return this.data.slice(startIndex, endIndex);
+    },
+  },
+  methods: {
+    async fetchData() {
+      try {
+        const response = await axios.get(
+          "http://127.0.0.1:8880/api/crud/admin/dorm"
+        );
+        this.data = response.data;
+        console.log(this.data);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+  mounted() {
+    this.fetchData();
+  },
+};
 </script>
 
-<style></style>
-  
+<style>
+.but-edit {
+  text-decoration: none;
+  color: white;
+}
+</style>
